@@ -71,16 +71,19 @@ NOTE: Make sure it’s indented to the left. If the indent is off then the progr
 After the try statement, we need to add the 3 exceptions using the except keyword followed by the error condition (or the exception). All exceptions must be added AFTER the sock.close() statement.
 
 1. For the Ctrl + C error, we make use the KeyboardInterrupt exception:
+
 except KeyboardInterrupt:
 print ("You pressed Ctrl+C")
 sys.exit()
 
 2. For the “Hostname could not be resolved” error, we refer to the gaierror exception:
+
 except socket.gaierror:
 print("Hostname could not be resolved")
 sys.exit()
 
 3. For the “Could not connect to remote server” error, we refer to the socket.error exception: 
+
 except socket.error:
 print("Could not connect to remote server")
 sys.exit()
