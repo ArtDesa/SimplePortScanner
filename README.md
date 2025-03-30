@@ -1,16 +1,16 @@
 # SimplePortScanner
 A simple, easy-to-use port scanner script written in Python.
 
-##Overview
+## Overview
 Port scanning tools display which ports on a network are open for communication. This tool can help in many different ways. An example is whether or not a port is open can help a penetration tester determine their next steps in launching an attack against a network. 
 A simple port scanning script in Python is easy to make and a good way to show socket programming with Python, as well as how port scanners work.
 
 The script can be run from the command line or from within a IDE such as PyCharm.
 
-##How does it work?
+## How does it work?
 Going over the code in .py file to exaplin what is happening.
 
-###Sockets
+### Sockets
 Sockets are the basis for all network communications performed by computers. A socket is the combination of an IP address and a port number to from a unique connection point. Sockets and the socket API are used to send messages across a network. 
 They provide a form of inter-process communication (IPC). The best and most obvious example is the Internet, which you connect to via your ISP. 
 For more details and information on socket programming with Python, check the following links: https://docs.python.org/3/library/socket.html and https://realpython.com/python-sockets/.
@@ -32,7 +32,7 @@ Socket Types:
 SOCK_STREAM refers to TCP connections
 SOCK_DGRAM refers to UDP connections
 
-###Asking for user input
+### Asking for user input
 The script will ask the user for the target host name as input to scan. This will be held by the remoteServer variable:
 remoteServer = input("Enter a remote host to scan: ")
 
@@ -41,7 +41,7 @@ For example: www.springboard.com
 NOTE: Please be aware that you should only port scan networks that you are responsible for, or with permission of the network administrators. Actions such as port scanning can be seen as a precursor to hacking as you are looking for open ports on network devices. 
 To avoid any issues, just enter the name of your PC, or a PC on your home network. 
 
-###Range function + Datetime
+### Range function + Datetime
 Next, we use the range function to specify the ports to scan: 
 
 for port in range(1,1024):
@@ -51,14 +51,14 @@ Note: A result of 0 (if result == 0), means success. In other words, the port is
 
 We also need to show the time it took to perform the scan. To do this we use the datetime module. datetime.now() will give us the current time. We do this twice, once before the scan, and then after. We subtract the first value from the second value to measure the time it took.
 
-###Setting a timeout for the scan
+### Setting a timeout for the scan
 There is a default timeout set for socket connection attempts. 
 To avoid the problem of waiting for an undetermined amount of time for a socket to connect, we can reduce the wait time by setting a shorter timeout. This is done using the socket.settimeout() method of socket:
 sock.settimeout(<timeout_value_in_seconds>)
  
 The default timeout is one second, so I have set it to half a second (0.5).
 
-###Error handling
+### Error handling
 Finally, let’s add some error handling. 
 There are usually 3 main exceptions we should take into account:
 1. Interrupting the program with Ctrl + C
